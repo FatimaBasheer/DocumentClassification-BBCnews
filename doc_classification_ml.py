@@ -17,7 +17,7 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.linear_model import SGDClassifier
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
-
+from sklearn.calibration import CalibratedClassifierCV
 
 
 # for dirname, _, filenames in os.walk('./Datasets/bbc/'):
@@ -129,6 +129,7 @@ cv_df.groupby('model_name').accuracy.mean()
 X_train, X_test, y_train, y_test, indices_train, indices_test = train_test_split(features, labels, df.index, test_size=0.33, random_state=0)
 #Logistic Regression
 lrmodel = LogisticRegression(random_state=0)
+lrmodel.fit(X_train, y_train)
 y_pred_proba = lrmodel.predict_proba(X_test)
 y_pred = lrmodel.predict(X_test)
 
@@ -154,6 +155,7 @@ plt.ylabel('SVM Actual')
 plt.xlabel('SVM Predicted')
 #Random Forest Classifier
 rfcmodel = RandomForestClassifier(n_estimators=200, max_depth=3, random_state=0)
+rfcmodel.fit(X_train, y_train)
 y_pred_proba = rfcmodel.predict_proba(X_test)
 y_pred = rfcmodel.predict(X_test)
 
@@ -164,6 +166,7 @@ plt.ylabel('RFC Actual')
 plt.xlabel('RFC Predicted')
 #Naive Bayes
 nbmodel = MultinomialNB()
+nbmodel.fit(X_train, y_train)
 y_pred_proba = nbmodel.predict_proba(X_test)
 y_pred = nbmodel.predict(X_test)
 
