@@ -1,5 +1,5 @@
 # DocumentClassification-BBCnews
-NLP Assignment for document classification using different ML algorithms and Deep Learning
+An NLP project for document classification using different ML algorithms and Deep Learning
 
 doc_classification_ml.py is a jupyter notebook code, so please run them in blocks else the plots can overlap,I'll correct the overlap later.
 
